@@ -63,5 +63,12 @@ Notes:
           5
     
     
-  1 test passed, 1 test failed
+    Throws an exception                                                error    [0 ms]
+      
+      An unexpected exception was thrown:
+      
+         RuntimeException: Oops
+         <stack trace>
+    
+  1 test passed, 1 test failed, 1 test threw an exception
 ```
