@@ -35,6 +35,7 @@ ScalaUnit is a modern testing framework for Scala.
 
 ## Output 
 
+(imagine this in full technicolour)
 ```
   GizmometerTest
     Addition (using a simple Boolean check)                            ok       [0 ms]
