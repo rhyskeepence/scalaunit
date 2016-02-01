@@ -36,6 +36,12 @@ ScalaUnit is a modern testing framework for Scala.
 ## Output 
 
 (imagine this in full technicolour)
+
+Notes:
+- Context is important, so the assertion failure starts by showing the filename, line number and code that produced the failure.
+- Layout makes a big difference. Whitespace is used to improve clarity.
+- Colour can be used to make skimming much easier.
+
 ```
   GizmometerTest
     Addition (using a simple Boolean check)                            ok       [0 ms]
