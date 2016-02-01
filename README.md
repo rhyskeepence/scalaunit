@@ -5,15 +5,16 @@ ScalaUnit is a modern testing framework for Scala.
 ## Features
 
 - A single way of defining a test (the test method)
-- A simple assertion syntax, that doesn't require your tests to be littered with thousands of implicit conversions that slow down IntelliJ
+- A simple assertion syntax, that doesn't require your tests to be littered with thousands of implicit conversions that slow down IntelliJ and confuse the user
+- Matchers use exceptions, rather than return values, to control failure
 - An assertion macro, that shows as much context as possible (for example, printing the code exactly as written, rather than the line number or stack trace of the error)
 - A hamcrest-inspired matcher framework, that produces helpful error messages designed for humans, allowing you to make the mental leap from **"The test is angry"** to fixing the problem in the shortest space of time.
-- Matchers are type-safe, preventing successful compilation of tests that will never pass, and composable, 
+- Matchers are designed to be composible, while still maintaining human readable messages
+- Matchers are type-safe, preventing successful compilation of tests that will never pass
 - Tests can be filtered easily using patterns specified from command line arguments
-- Allow the combination of ScalaUnit tests, ScalaCheck, and other Scala testing frameworks into a single test suite.
-- SBT integration, of course, with a focus on experience. This means succinct output for passing tests, lots of help for failing tests, and the use of colour and layout to help.
+- SBT integration, of course, with a focus on experience. This means succinct output for passing tests and lots of help for failing tests.
 - IntelliJ integration
-
+- Allow the combination of ScalaUnit tests, ScalaCheck, and other Scala testing frameworks into a single test suite.
 
 
 ## Example
@@ -29,6 +30,10 @@ ScalaUnit is a modern testing framework for Scala.
     
     test("Addition (using the equalTo Matcher)") = {
       assert(2 + 2, equalTo(5))
+    }
+
+    test("Throws an exception") = {
+      throw new RuntimeException("Oops")
     }
     
   }
