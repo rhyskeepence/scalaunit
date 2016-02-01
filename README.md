@@ -4,6 +4,7 @@ ScalaUnit is a modern testing framework for Scala.
 
 ## Features
 
+- A single way of defining a test (the test method)
 - A simple assertion syntax, that doesn't require your tests to be littered with thousands of implicit conversions that slow down IntelliJ
 - An assertion macro, that shows as much context as possible (for example, printing the code exactly as written, rather than the line number or stack trace of the error)
 - A hamcrest-inspired matcher framework, that produces helpful error messages designed for humans, allowing you to make the mental leap from **"The test is angry"** to fixing the problem in the shortest space of time.
@@ -20,7 +21,7 @@ ScalaUnit is a modern testing framework for Scala.
 ```
   import scalaunit._
   
-  object GizmometerTest {
+  object GizmometerTest extends Test {
   
     test("Addition (using a simple Boolean check)") = {
       assert( (2 + 2) == 5 )
