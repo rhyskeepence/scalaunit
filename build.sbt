@@ -1,19 +1,36 @@
 lazy val buildSettings = Seq(
-	organization := "com.rhyskeepence",
+	organization := "org.scalaunit",
 	version := "0.1.1",
+	name := "scalaunit",
 
   scalaVersion := "2.11.7",
-	scalacOptions ++= commonScalacOptions,
-
-	testFrameworks += new TestFramework("scalaunit.runner.Framework")
+	scalacOptions ++= commonScalacOptions
 )
 
-lazy val scalaunit = crossProject.crossType(CrossType.Pure)
-	.settings(moduleName := "scalaunit")
-	.settings(buildSettings:_*)
+lazy val jsSettings = Seq(
+  scalaJSStage in Test := FastOptStage,
+  testFrameworks += new TestFramework("scalaunit.runner.Framework"),
+  libraryDependencies ++= Seq(
+    "org.scala-js"    %% "scalajs-test-interface"     % scalaJSVersion
+  )
+)
 
-lazy val scalaunitJVM = scalaunit.jvm
-lazy val scalaunitJS = scalaunit.js
+lazy val jvmSettings = Seq(
+  testFrameworks += new TestFramework("scalaunit.runner.Framework"),
+  libraryDependencies ++= Seq(
+    "org.scala-sbt"   %  "test-interface"             % "1.0",
+    "org.scala-js"    %% "scalajs-stubs"              % scalaJSVersion % "provided"
+  )
+)
+
+lazy val scalaunit = crossProject
+  .settings(buildSettings:_*)
+  .jvmSettings(jvmSettings:_*)
+  .jsSettings(jsSettings:_*)
+
+lazy val jvm = scalaunit.jvm.in(file("jvm"))
+
+lazy val js = scalaunit.js.in(file("js"))
 
 lazy val commonScalacOptions = Seq(
 	"-deprecation",
