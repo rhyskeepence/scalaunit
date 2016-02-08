@@ -1,5 +1,8 @@
 package scalaunit.framework
 
+import scala.scalajs.js.annotation.JSExportDescendentClasses
+
+@JSExportDescendentClasses
 abstract class Test {
   private[scalaunit] val tests = new scala.collection.mutable.ListBuffer[TestCase]
 
