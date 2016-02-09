@@ -5,6 +5,10 @@ package object scalaunit {
   type Test = framework.Test
   type AssertionFailure = framework.AssertionFailure
 
+  def assert(expr: Boolean): Unit = macro assertion.Assert.assert
+
+
+
   def run(test: Test, logger: TestLogger): List[Result] = {
 
     test.tests.toList.map(testcase => {

@@ -9,7 +9,9 @@ class GizmometerTest extends Test {
   }
 
   test("Oh NO!!") = {
-    throw new framework.AssertionFailure("doesn't pass sorry")
+    assert(false)
+
+//    throw new framework.AssertionFailure("doesn't pass sorry")
   }
 
   test("Random exception test") = {

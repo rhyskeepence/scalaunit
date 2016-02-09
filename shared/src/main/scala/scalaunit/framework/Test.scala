@@ -9,15 +9,16 @@ abstract class Test {
   lazy val test = new TestSpecifier()
 
   final class TestSpecifier() {
-    def update(name: String, body: => Any) = tests += new TestCase(name, body)
+    def update(name: String, body: => Unit) = tests += new TestCase(name, body)
   }
 }
 
-final class TestCase(val name: String, body: => Any) {
+final class TestCase(val name: String, body: => Unit) {
   def run() = body
 }
 
-case class AssertionFailure(message: String) extends Exception
+case class AssertionContext(fileName: String, lineNumber: Int, line: String)
+case class AssertionFailure(context: AssertionContext, message: String) extends AssertionError(message)
 
 sealed trait Result {
   val name: String

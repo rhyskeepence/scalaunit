@@ -4,7 +4,11 @@ lazy val buildSettings = Seq(
 	name := "scalaunit",
 
   scalaVersion := "2.11.7",
-	scalacOptions ++= commonScalacOptions
+	scalacOptions ++= commonScalacOptions,
+
+  libraryDependencies ++= Seq(
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value
+  )
 )
 
 lazy val jsSettings = Seq(
@@ -44,6 +48,7 @@ lazy val commonScalacOptions = Seq(
 	"-Yno-adapted-args",
 	"-Ywarn-dead-code",
 	"-Ywarn-numeric-widen",
-	"-Ywarn-unused-import",
-	"-Ywarn-value-discard"
+	"-Ywarn-unused-import"
+//  ,
+//	"-Ywarn-value-discard"
 )

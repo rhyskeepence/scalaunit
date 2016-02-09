@@ -124,11 +124,15 @@ final class SbtTestLogger extends TestLogger {
 
     case Failure(name, duration, failure) =>
       println(s"  ${printableName(name)}   failure  [${duration.toString} ms]")
-      println(s"    $failure")
+      println(s"    ${failure.context.fileName}:${failure.context.lineNumber}|   ${failure.context.line}")
+      println( "")
+      println(s"    ${failure.message}")
+      println( "")
 
     case Error(name, duration, error) =>
       println(s"  ${printableName(name)}   error    [${duration.toString} ms]")
       println(s"    ${asString(error)}")
+      println( "")
   }
 
   def asString(t: Throwable) = {
@@ -136,7 +140,7 @@ final class SbtTestLogger extends TestLogger {
     val pw = new PrintWriter(sw)
 
     t.printStackTrace(pw)
-    sw.toString
+    sw.toString.replaceAll("\n\\s+", "\n      ")
   }
 
   // TODO: Recursively call, adding newlines, if the string is longer than 64 characters, to support long names.
