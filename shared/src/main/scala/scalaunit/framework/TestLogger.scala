@@ -1,5 +1,6 @@
 package scalaunit.framework
 
 abstract class TestLogger {
-  def onComplete(test: Test, result: Result): Unit
+  def testBegin(test: Test): Unit
+  def testCaseComplete(test: Test, result: Result): Unit
 }

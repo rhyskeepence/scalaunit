@@ -8,6 +8,10 @@ class GizmometerTest extends Test {
     println("yay!")
   }
 
+  test("Matchers") = {
+    assertThat(5 + 5, m.equalTo(9))
+  }
+
   test("Oh NO!!") = {
     assert(false)
 

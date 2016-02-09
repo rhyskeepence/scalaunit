@@ -54,7 +54,9 @@ abstract class ScalaUnitRunner extends sbt.testing.Runner {
         val name = outerTaskDef.fullyQualifiedName()
 
         val suite = TestUtils.newInstance(name, classLoader)(Seq.empty[AnyRef]).asInstanceOf[Test]
-        scalaunit.run(suite, new SbtTestLogger).map({
+        val logger = new SbtTestLogger(loggers)
+
+        scalaunit.run(suite, logger).map({
           case Success(_, _)    => successCount.incrementAndGet()
           case Failure(_, _, _) => failureCount.incrementAndGet()
           case Error(_, _, _)   => errorCount.incrementAndGet()
@@ -94,9 +96,9 @@ final class ScalaUnitMasterRunner(val args: Array[String],
   }
 
   override def done(): String = {
-    s"${printableNumberOfTests(successCount)} passed, " +
-      s"${printableNumberOfTests(failureCount)} failed, " +
-      s"${printableNumberOfTests(errorCount)} threw an exception"
+    s"${Console.GREEN}${printableNumberOfTests(successCount)} passed${Console.RESET}, " +
+      s"${Console.RED}${printableNumberOfTests(failureCount)} failed${Console.RESET}, " +
+      s"${Console.RED}${printableNumberOfTests(errorCount)} threw an exception${Console.RESET}"
   }
 
 }
@@ -116,23 +118,40 @@ final class ScalaUnitSlaveRunner(val args: Array[String],
 
 }
 
-final class SbtTestLogger extends TestLogger {
+final class SbtTestLogger(loggers: Array[Logger]) extends TestLogger {
 
-  override def onComplete(test: Test, result: Result): Unit = result match {
+  def log(ansi: String, f: Logger => String => Unit) = {
+    loggers.foreach(logger => {
+      if (logger.ansiCodesSupported())
+        f(logger)(ansi)
+      else
+        f(logger)(ansi.replaceAll(Console.GREEN, "").replaceAll(Console.RED, "").replaceAll(Console.RESET, ""))
+    })
+  }
+
+  def info(ansi: String) = log(ansi, _.info)
+  def warn(ansi: String) = log(ansi, _.warn)
+  def logerror(ansi: String) = log(ansi, _.error)
+
+  override def testBegin(test: scalaunit.Test): Unit = {
+    info(test.getClass.getName)
+  }
+
+  override def testCaseComplete(test: Test, result: Result): Unit = result match {
     case Success(name, duration) =>
-      println(s"  ${printableName(name)}   ok       [${duration.toString} ms]")
+      info(s"  ${printableName(name)}   ${Console.GREEN}ok${Console.RESET}       [${duration.toString} ms]")
 
     case Failure(name, duration, failure) =>
-      println(s"  ${printableName(name)}   failure  [${duration.toString} ms]")
-      println(s"    ${failure.context.fileName}:${failure.context.lineNumber}|   ${failure.context.line}")
-      println( "")
-      println(s"    ${failure.message}")
-      println( "")
+      warn(s"  ${printableName(name)}   ${Console.RED_B}failure${Console.RESET}  [${duration.toString} ms]")
+      warn(s"    ${failure.context.fileName}:${failure.context.lineNumber}|   ${failure.context.line}")
+      warn( "")
+      warn(s"    ${failure.message.replaceAll("\n", "\n    ")}")
+      warn( "")
 
     case Error(name, duration, error) =>
-      println(s"  ${printableName(name)}   error    [${duration.toString} ms]")
-      println(s"    ${asString(error)}")
-      println( "")
+      logerror(s" ${printableName(name)}   ${Console.RED_B}error${Console.RESET}    [${duration.toString} ms]")
+      logerror(s"   ${asString(error)}")
+      logerror( "")
   }
 
   def asString(t: Throwable) = {
@@ -140,12 +159,12 @@ final class SbtTestLogger extends TestLogger {
     val pw = new PrintWriter(sw)
 
     t.printStackTrace(pw)
-    sw.toString.replaceAll("\n\\s+", "\n      ")
+    sw.toString.replaceAll("\n\\s+", "\n     ")
   }
 
   // TODO: Recursively call, adding newlines, if the string is longer than 64 characters, to support long names.
   def printableName(name: String): String =
     name
       .replaceAll("\n", " ")
-      .padTo(64, ' ')
+      .padTo(80, ' ')
 }
