@@ -1,24 +1,23 @@
 package example
 
 import scalaunit._
+import scalaunit.matchers._
 
 class GizmometerTest extends Test {
 
-  test("Do the thing") = {
-    println("yay!")
+  test("passes") = {
+    assert(true)
   }
 
-  test("Matchers") = {
-    assertThat(5 + 5, m.equalTo(9))
+  test("assertions using a matcher") = {
+    assertThat(5 + 5, equalTo(9))
   }
 
-  test("Oh NO!!") = {
+  test("assertions using a boolean condition") = {
     assert(false)
-
-//    throw new framework.AssertionFailure("doesn't pass sorry")
   }
 
-  test("Random exception test") = {
+  test("unexpected exceptions result in an error") = {
     throw new RuntimeException("Bad bad test")
   }
 }

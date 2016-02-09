@@ -1,6 +1,6 @@
-package scalaunit.matchers
+package scalaunit
 
-trait Matchers {
+package object matchers {
 
   def equalTo[A](expected: A) = new Matcher[A] {
     def description: String = expected.toString

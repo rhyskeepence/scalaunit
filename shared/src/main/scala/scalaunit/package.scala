@@ -6,10 +6,11 @@ package object scalaunit {
   type Test = framework.Test
   type AssertionFailure = framework.AssertionFailure
 
-  object m extends matchers.Matchers
+
 
   def assert(expr: Boolean): Unit = macro assertion.Assert.assert
 
+  // TODO variance
   def assertThat[A](expr: A, matcher: Matcher[A]): Unit = macro assertion.Assert.assertThat[A]
 
 
