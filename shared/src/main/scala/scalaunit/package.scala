@@ -7,6 +7,7 @@ package object scalaunit {
   type AssertionFailure = framework.AssertionFailure
 
 
+  def fail(message: String) = throw new TestFailure(message)
 
   def assert(expr: Boolean): Unit = macro assertion.Assert.assert
 
@@ -19,7 +20,7 @@ package object scalaunit {
 
     logger.testBegin(test)
 
-    test.tests.toList.map(testcase => {
+    test._tests.toList.map(testcase => {
       val timer = Timer.start()
 
       val result = try {
@@ -27,8 +28,11 @@ package object scalaunit {
         Success(testcase.name, timer.elapsedMs)
 
       } catch {
-        case failure: AssertionFailure =>
-          Failure(testcase.name, timer.elapsedMs, failure)
+        case TestFailure(message) =>
+          Failure(testcase.name, timer.elapsedMs, None, message)
+
+        case AssertionFailure(context, message) =>
+          Failure(testcase.name, timer.elapsedMs, Some(context), message)
 
         case throwable: Throwable =>
           Error(testcase.name, timer.elapsedMs, throwable)

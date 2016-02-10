@@ -12,20 +12,26 @@ object Matcher {
   */
 abstract class Matcher[A] {
 
-  def description: String
-  def matches(item: A): Matcher.MatchResult
-
   /**
-    * Convenience method to return a MatchResult indicating a successful Match
-    */
-  protected def ok() = Matcher.Match
-
-  /**
-    * Convenience method to return a MatchResult indicating a mismatch.
+    * Decide if a value is an acceptable match
     *
-    * @param description A description of why the matcher did not match. This will be built up to be
-    *                    part of a larger description, and should be concise.
+    * @param item The value to check
+    * @return true if the value matches, false otherwise
     */
-  protected def mismatch(description: String) = Matcher.Mismatch(description)
+  def matches(item: A): Boolean
+
+  /**
+    * A description of why the matcher did not match. This will be built up to be
+    * part of a larger description, and should be concise.
+    *
+    * @param item The item that did not match
+    */
+  def describeMismatch(item: A): String = "was " + item.toString
+
+  /**
+    * A description of this matcher. This will be built up to be part of a
+    * larger description, and should be concise.
+    */
+  def description: String
 
 }

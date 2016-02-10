@@ -57,9 +57,9 @@ abstract class ScalaUnitRunner extends sbt.testing.Runner {
         val logger = new SbtTestLogger(loggers)
 
         scalaunit.run(suite, logger).map({
-          case Success(_, _)    => successCount.incrementAndGet()
-          case Failure(_, _, _) => failureCount.incrementAndGet()
-          case Error(_, _, _)   => errorCount.incrementAndGet()
+          case Success(_, _)        => successCount.incrementAndGet()
+          case Failure(_, _, _, _)  => failureCount.incrementAndGet()
+          case Error(_, _, _)       => errorCount.incrementAndGet()
         })
 
         Array()
@@ -125,7 +125,7 @@ final class SbtTestLogger(loggers: Array[Logger]) extends TestLogger {
       if (logger.ansiCodesSupported())
         f(logger)(ansi)
       else
-        f(logger)(ansi.replaceAll(Console.GREEN, "").replaceAll(Console.RED, "").replaceAll(Console.RESET, ""))
+        f(logger)(ansi.replaceAll(Console.GREEN, "").replaceAll(Console.RED_B, "").replaceAll(Console.RESET, ""))
     })
   }
 
@@ -141,11 +141,15 @@ final class SbtTestLogger(loggers: Array[Logger]) extends TestLogger {
     case Success(name, duration) =>
       info(s"  ${printableName(name)}   ${Console.GREEN}ok${Console.RESET}       [${duration.toString} ms]")
 
-    case Failure(name, duration, failure) =>
+    case Failure(name, duration, maybeContext, message) =>
       warn(s"  ${printableName(name)}   ${Console.RED_B}failure${Console.RESET}  [${duration.toString} ms]")
-      warn(s"    ${failure.context.fileName}:${failure.context.lineNumber}|   ${failure.context.line}")
+
+      maybeContext.foreach(context =>
+        warn(s"    ${context.fileName}:${context.lineNumber}|   ${context.line}")
+      )
+
       warn( "")
-      warn(s"    ${failure.message.replaceAll("\n", "\n    ")}")
+      warn(s"    ${message.replaceAll("\n", "\n    ")}")
       warn( "")
 
     case Error(name, duration, error) =>
@@ -162,7 +166,7 @@ final class SbtTestLogger(loggers: Array[Logger]) extends TestLogger {
     sw.toString.replaceAll("\n\\s+", "\n     ")
   }
 
-  // TODO: Recursively call, adding newlines, if the string is longer than 64 characters, to support long names.
+  // TODO: Recursively call, adding newlines, if the string is longer than the limit, to support long names.
   def printableName(name: String): String =
     name
       .replaceAll("\n", " ")

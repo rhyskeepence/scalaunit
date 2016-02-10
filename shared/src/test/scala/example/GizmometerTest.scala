@@ -9,8 +9,16 @@ class GizmometerTest extends Test {
     assert(true)
   }
 
+  test("triggered failure") = {
+    fail("Oh no.")
+  }
+
   test("assertions using a matcher") = {
     assertThat(5 + 5, equalTo(9))
+  }
+
+  test("assertions using a negated matcher") = {
+    assertThat(5 + 5, not(equalTo(10)))
   }
 
   test("assertions using a boolean condition") = {

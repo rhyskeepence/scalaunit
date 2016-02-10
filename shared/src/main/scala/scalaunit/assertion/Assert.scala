@@ -34,16 +34,14 @@ object Assert {
 
 
   def runAssertThat[A](context: AssertionContext, item: A, matcher: Matcher[A]): Unit = {
-    matcher.matches(item) match {
-      case Matcher.Match => ()
-      case Matcher.Mismatch(mismatch) => {
+    if (matcher.matches(item))
+      ()
+    else {
+      val message =
+        s"Expected: ${matcher.description}\n" +
+        s"     but: ${matcher.describeMismatch(item)}"
 
-        val message =
-          s"Expected: ${matcher.description}\n" +
-          s"     but: $mismatch"
-
-        throw new AssertionFailure(context, message)
-      }
+      throw new AssertionFailure(context, message)
     }
   }
 
