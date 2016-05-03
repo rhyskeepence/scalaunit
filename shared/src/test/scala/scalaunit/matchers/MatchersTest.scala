@@ -31,4 +31,18 @@ class MatchersTest extends Test {
     }
   }
 
+  test("allOf matches") = {
+    assertThat(1 + 1, allOf(equalTo(2)))
+  }
+
+  test("allOf does not match") = {
+    try assertThat(1 + 1, allOf(equalTo(1), equalTo(2)))
+    catch {
+      case AssertionFailure(context, message) =>
+        assert(message contains "Expected: 1 and 2")
+        assert(message contains "but: was 2")
+    }
+
+  }
+
 }
