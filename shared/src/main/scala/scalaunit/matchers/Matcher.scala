@@ -1,12 +1,5 @@
 package scalaunit.matchers
 
-
-object Matcher {
-  sealed trait MatchResult
-  case object Match extends MatchResult
-  case class Mismatch(description: String) extends MatchResult
-}
-
 /**
   * A matcher that can decide if a value is acceptable, and if not, returns a description of the mismatch.
   */
