@@ -33,6 +33,7 @@ class MatchersTest extends Test {
 
   test("allOf matches") = {
     assertThat(1 + 1, allOf(equalTo(2)))
+    assertThat(1 + 1, allOf(List(equalTo(2))))
   }
 
   test("allOf does not match") = {
@@ -42,7 +43,20 @@ class MatchersTest extends Test {
         assert(message contains "Expected: 1 and 2")
         assert(message contains "but: was 2")
     }
+  }
 
+  test("anyOf matches") = {
+    assertThat(1 + 1, anyOf(equalTo(2), equalTo(3)))
+    assertThat(1 + 1, anyOf(List(equalTo(2), equalTo(3))))
+  }
+
+  test("anyOf does not match") = {
+    try assertThat(1 + 1, anyOf(equalTo(1), equalTo(3)))
+    catch {
+      case AssertionFailure(context, message) =>
+        assert(message contains "Expected: 1 or 3")
+        assert(message contains "but: was 2")
+    }
   }
 
 }

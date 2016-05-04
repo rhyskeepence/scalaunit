@@ -17,4 +17,15 @@ package object matchers {
     override def description: String = matchers.map(_.description).mkString(" and ")
   }
 
+  def allOf[A](matchers: List[Matcher[A]]): Matcher[A] =
+    allOf(matchers: _*)
+
+  def anyOf[A](matchers: Matcher[A]*) = new Matcher[A] {
+    override def matches(item: A): Boolean = matchers.exists(_.matches(item))
+    override def description: String = matchers.map(_.description).mkString(" or ")
+  }
+
+  def anyOf[A](matchers: List[Matcher[A]]): Matcher[A] =
+    anyOf(matchers: _*)
+
 }
