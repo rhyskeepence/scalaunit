@@ -1,15 +1,16 @@
 package scalaunit.matchers
 
+import org.junit._
 import scalaunit._
 import scalaunit.framework.AssertionFailure
 
-class MatchersTest extends Test {
+class MatchersTest {
 
-  test("equalTo matches") = {
+  @Test def equalToMatches() = {
     assertThat(1 + 1, equalTo(2))
   }
 
-  test("equalTo does not match") = {
+  @Test def equalToDoesNotMatch() = {
     try assertThat(1 + 2, equalTo(1))
     catch {
       case AssertionFailure(context, message) =>
@@ -18,11 +19,11 @@ class MatchersTest extends Test {
     }
   }
 
-  test("not(equalTo) matches") = {
+  @Test def notEqualToMatches() = {
     assertThat(1 + 1, not(equalTo(3)))
   }
 
-  test("not(equalTo) does not match") = {
+  @Test def notEqualToDoesNotMatch() = {
     try assertThat(1 + 2, not(equalTo(3)))
     catch {
       case AssertionFailure(context, message) =>
@@ -31,12 +32,12 @@ class MatchersTest extends Test {
     }
   }
 
-  test("allOf matches") = {
+  @Test def allOfMatches() = {
     assertThat(1 + 1, allOf(equalTo(2)))
     assertThat(1 + 1, allOf(List(equalTo(2))))
   }
 
-  test("allOf does not match") = {
+  @Test def allOfDoesNotMatch() = {
     try assertThat(1 + 1, allOf(equalTo(1), equalTo(2)))
     catch {
       case AssertionFailure(context, message) =>
@@ -45,12 +46,12 @@ class MatchersTest extends Test {
     }
   }
 
-  test("anyOf matches") = {
+  @Test def anyOfMatches() = {
     assertThat(1 + 1, anyOf(equalTo(2), equalTo(3)))
     assertThat(1 + 1, anyOf(List(equalTo(2), equalTo(3))))
   }
 
-  test("anyOf does not match") = {
+  @Test def anyOfDoesNotMatch() = {
     try assertThat(1 + 1, anyOf(equalTo(1), equalTo(3)))
     catch {
       case AssertionFailure(context, message) =>

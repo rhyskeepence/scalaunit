@@ -1,31 +1,29 @@
 package example
 
+import org.junit._
 import scalaunit._
 import scalaunit.matchers._
 
-class GizmometerTest extends Test {
+class GizmometerTest {
 
-  test("passes") = {
+  @Test def passes() = {
     assert(true)
   }
 
-  test("triggered failure") = {
+  @Test def triggeredFailure() = {
     fail("Oh no.")
   }
 
-  test("assertions using a matcher") = {
+  @Test def assertionsUsingAMatcher() = {
     assertThat(5 + 5, equalTo(9))
   }
 
-  test("assertions using a negated matcher") = {
+  @Test def assertionsUsingANegatedMatcher() = {
     assertThat(5 + 5, not(equalTo(10)))
   }
 
-  test("assertions using a boolean condition") = {
+  @Test def assertionsUsingABooleanCondition() = {
     assert(false)
   }
 
-  test("unexpected exceptions result in an error") = {
-    throw new RuntimeException("Bad bad test")
-  }
 }

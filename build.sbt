@@ -13,23 +13,23 @@ lazy val buildSettings = Seq(
 
 lazy val jsSettings = Seq(
   scalaJSStage in Test := FastOptStage,
-  testFrameworks += new TestFramework("scalaunit.runner.Framework"),
   libraryDependencies ++= Seq(
     "org.scala-js"    %% "scalajs-test-interface"     % scalaJSVersion
   )
 )
 
 lazy val jvmSettings = Seq(
-  testFrameworks += new TestFramework("scalaunit.runner.Framework"),
   libraryDependencies ++= Seq(
     "org.scala-sbt"   %  "test-interface"             % "1.0",
-    "org.scala-js"    %% "scalajs-stubs"              % scalaJSVersion % "provided"
+    "org.scala-js"    %% "scalajs-stubs"              % scalaJSVersion  % "provided",
+    "com.novocode"    %  "junit-interface"            % "0.11"          % "test"
   )
 )
 
 lazy val scalaunit = crossProject
   .settings(buildSettings:_*)
   .jvmSettings(jvmSettings:_*)
+  .jsConfigure(_.enablePlugins(ScalaJSJUnitPlugin))
   .jsSettings(jsSettings:_*)
 
 lazy val jvm = scalaunit.jvm.in(file("jvm"))
