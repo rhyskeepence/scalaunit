@@ -3,6 +3,7 @@ ScalaUnit is a test assertion framework for Scala and Scala.JS.
 It builds on top of JUnit, and is intended to be used as a lightweight alternative to specs2 and ScalaTest.
 
 [![Join the chat at https://gitter.im/rhyskeepence/scalaunit](https://badges.gitter.im/rhyskeepence/scalaunit.svg)](https://gitter.im/rhyskeepence/scalaunit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[ ![Download](https://api.bintray.com/packages/rhyskeepence/maven/scalaunit/images/download.svg) ](https://bintray.com/rhyskeepence/maven/scalaunit/_latestVersion)
 
 ## Features
 
