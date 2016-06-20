@@ -29,7 +29,7 @@ lazy val jvmSettings = Seq(
   )
 )
 
-lazy val docSettings = site.settings ++ ghpages.settings ++ Seq(
+lazy val docSettings = site.settings ++ ghpages.settings ++ site.includeScaladoc() ++ Seq(
   git.remoteRepo := "git@github.com:rhyskeepence/scalaunit.git"
 )
 

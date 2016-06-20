@@ -5,6 +5,13 @@ It builds on top of JUnit, and is intended to be used as a lightweight alternati
 [![Join the chat at https://gitter.im/rhyskeepence/scalaunit](https://badges.gitter.im/rhyskeepence/scalaunit.svg)](https://gitter.im/rhyskeepence/scalaunit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [ ![Download](https://api.bintray.com/packages/rhyskeepence/maven/scalaunit/images/download.svg) ](https://bintray.com/rhyskeepence/maven/scalaunit/_latestVersion)
 
+## Table of Contents
+
+1. [Features](#features)
+2. [Example](#example)
+3. [Output](#output)
+4. [Matcher Documentation](http://www.rhyskeepence.com/scalaunit/latest/api/#scalaunit.matchers.package)
+
 ## Features
 
 - A simple assertion syntax, that doesn't require tests to be littered with thousands of implicit conversions that slow down IntelliJ and confuse the user

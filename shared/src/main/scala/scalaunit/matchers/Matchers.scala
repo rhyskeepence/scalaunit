@@ -50,7 +50,7 @@ package object matchers {
     anyOf(matchers: _*)
 
   /**
-    * A Matcher that matches the [[scala.Boolean]] value {{{true}}}
+    * A Matcher that matches the Boolean value {{{true}}}
     */
   def isTrue: Matcher[Boolean] = new Matcher[Boolean] {
     override def matches(item: Boolean) = item
@@ -58,7 +58,7 @@ package object matchers {
   }
 
   /**
-    * A Matcher that matches the [[scala.Boolean]] value {{{false}}}
+    * A Matcher that matches the Boolean value {{{false}}}
     */
   def isFalse: Matcher[Boolean] = new Matcher[Boolean] {
     override def matches(item: Boolean) = !item
