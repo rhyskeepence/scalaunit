@@ -60,4 +60,30 @@ class MatchersTest {
     }
   }
 
+  @Test def isTrueMatches() = {
+    assertThat(true, isTrue)
+  }
+
+  @Test def isTrueDoesNotMatch() = {
+    try assertThat(false, isTrue)
+    catch {
+      case AssertionFailure(context, message) =>
+        assert(message contains "Expected: is true")
+        assert(message contains "but: was false")
+    }
+  }
+
+  @Test def isFalseMatches() = {
+    assertThat(false, isFalse)
+  }
+
+  @Test def isTrueDoesNotMatch() = {
+    try assertThat(false, isTrue)
+    catch {
+      case AssertionFailure(context, message) =>
+        assert(message contains "Expected: is true")
+        assert(message contains "but: was false")
+    }
+  }
+
 }

@@ -3,12 +3,15 @@ lazy val buildSettings = Seq(
 	version := "0.1.1",
 	name := "scalaunit",
 
-  scalaVersion := "2.11.7",
+  scalaVersion := "2.11.8",
 	scalacOptions ++= commonScalacOptions,
 
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value
-  )
+  ),
+
+  licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
+  publishMavenStyle := false
 )
 
 lazy val jsSettings = Seq(
@@ -26,8 +29,13 @@ lazy val jvmSettings = Seq(
   )
 )
 
+lazy val docSettings = site.settings ++ ghpages.settings ++ Seq(
+  git.remoteRepo := "git@github.com:rhyskeepence/scalaunit.git"
+)
+
 lazy val scalaunit = crossProject
   .settings(buildSettings:_*)
+  .settings(docSettings:_*)
   .jvmSettings(jvmSettings:_*)
   .jsConfigure(_.enablePlugins(ScalaJSJUnitPlugin))
   .jsSettings(jsSettings:_*)
