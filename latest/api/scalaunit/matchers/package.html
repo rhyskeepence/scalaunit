@@ -1,0 +1,284 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>matchers - scalaunit.matchers</title>
+          <meta name="description" content="matchers - scalaunit.matchers" />
+          <meta name="keywords" content="matchers scalaunit.matchers" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'scalaunit.matchers.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="scalaunit">scalaunit</a></p>
+        <h1>matchers</h1><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">matchers</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This package contains the most common Matchers for use with ScalaUnit.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="scalaunit.matchers"><span>matchers</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="scalaunit.matchers.Matcher" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Matcher[A]extendsAnyRef"></a>
+      <a id="Matcher[A]:Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Matcher.html"><span class="name">Matcher</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@Matcher[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A matcher that can decide if a value is acceptable, and if not, returns a description of the mismatch.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scalaunit.matchers#allOf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allOf[A](matchers:List[scalaunit.matchers.Matcher[A]]):scalaunit.matchers.Matcher[A]"></a>
+      <a id="allOf[A](List[Matcher[A]]):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allOf</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="matchers">matchers: <span class="extype" name="scala.List">List</span>[<a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.allOf.A">A</span>]]</span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.allOf.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@allOf[A](matchers:List[scalaunit.matchers.Matcher[A]]):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches if the value matches all of the given Matchers.</p>
+    </li><li name="scalaunit.matchers#allOf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="allOf[A](matchers:scalaunit.matchers.Matcher[A]*):scalaunit.matchers.Matcher[A]"></a>
+      <a id="allOf[A](Matcher[A]*):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">allOf</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="matchers">matchers: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.allOf.A">A</span>]*</span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.allOf.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@allOf[A](matchers:scalaunit.matchers.Matcher[A]*):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches if the value matches all of the given Matchers.</p>
+    </li><li name="scalaunit.matchers#anyOf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="anyOf[A](matchers:List[scalaunit.matchers.Matcher[A]]):scalaunit.matchers.Matcher[A]"></a>
+      <a id="anyOf[A](List[Matcher[A]]):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyOf</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="matchers">matchers: <span class="extype" name="scala.List">List</span>[<a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.anyOf.A">A</span>]]</span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.anyOf.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@anyOf[A](matchers:List[scalaunit.matchers.Matcher[A]]):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches if the value matches any of the given Matchers.</p>
+    </li><li name="scalaunit.matchers#anyOf" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="anyOf[A](matchers:scalaunit.matchers.Matcher[A]*):scalaunit.matchers.Matcher[A]"></a>
+      <a id="anyOf[A](Matcher[A]*):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyOf</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="matchers">matchers: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.anyOf.A">A</span>]*</span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.anyOf.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@anyOf[A](matchers:scalaunit.matchers.Matcher[A]*):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches if the value matches any of the given Matchers.</p>
+    </li><li name="scalaunit.matchers#equalTo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="equalTo[A](expected:A):scalaunit.matchers.Matcher[A]"></a>
+      <a id="equalTo[A](A):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equalTo</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="expected">expected: <span class="extype" name="scalaunit.matchers.equalTo.A">A</span></span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.equalTo.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@equalTo[A](expected:A):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches when the expected value is equal to the value being matched.</p>
+    </li><li name="scalaunit.matchers#isFalse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isFalse:scalaunit.matchers.Matcher[Boolean]"></a>
+      <a id="isFalse:Matcher[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isFalse</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@isFalse:scalaunit.matchers.Matcher[Boolean]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches the Boolean value </p><div class="fullcomment"><div class="comment cmt"><p>A Matcher that matches the Boolean value </p><pre><span class="kw">false</span></pre></div></div>
+    </li><li name="scalaunit.matchers#isTrue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isTrue:scalaunit.matchers.Matcher[Boolean]"></a>
+      <a id="isTrue:Matcher[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isTrue</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@isTrue:scalaunit.matchers.Matcher[Boolean]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that matches the Boolean value </p><div class="fullcomment"><div class="comment cmt"><p>A Matcher that matches the Boolean value </p><pre><span class="kw">true</span></pre></div></div>
+    </li><li name="scalaunit.matchers#not" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="not[A](matcher:scalaunit.matchers.Matcher[A]):scalaunit.matchers.Matcher[A]"></a>
+      <a id="not[A](Matcher[A]):Matcher[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">not</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="matcher">matcher: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.not.A">A</span>]</span>)</span><span class="result">: <a href="Matcher.html" class="extype" name="scalaunit.matchers.Matcher">Matcher</a>[<span class="extype" name="scalaunit.matchers.not.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#scalaunit.matchers.package@not[A](matcher:scalaunit.matchers.Matcher[A]):scalaunit.matchers.Matcher[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Matcher that inverts the given matcher.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
