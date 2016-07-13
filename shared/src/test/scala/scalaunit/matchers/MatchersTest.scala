@@ -1,6 +1,5 @@
 package scalaunit.matchers
 
-import org.junit._
 import scalaunit._
 import scalaunit.framework.AssertionFailure
 
